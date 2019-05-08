@@ -1,7 +1,7 @@
 module Jwt
   class UserAuthenticationService < ApplicationService
     def initialize(headers)
-      @token = headers['Authorization'].split(' ').last
+      @headers = headers
     end
 
     def call
@@ -12,7 +12,11 @@ module Jwt
 
     private
 
-    attr_accessor :token
+    attr_accessor :headers, :token
+
+    def token
+      @token ||= headers['Authorization'].present? ? headers['Authorization'].split(' ').last : nil 
+    end
 
     def user
       @user ||= User.find(decode_jwt_token)

@@ -1,11 +1,6 @@
 class LinksController < ApplicationController
+  before_action :authenticate_request, only: [:create]
   before_action :set_link, only: [:show, :update, :destroy]
-
-  def index
-    @links = Link.all
-
-    render json: @links
-  end
 
   def show
     render json: @link
@@ -29,10 +24,6 @@ class LinksController < ApplicationController
     else
       render json: { errors: result.error }, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @link.destroy
   end
 
   private
