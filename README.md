@@ -1,24 +1,11 @@
-# README
+# URL SHORTENER API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Endpoint
 
-Things you may want to cover:
+Creating a link [:POST] / params => original_url (required), shortened_url (optinal), expires_at (optional/hours as an integer)
 
-* Ruby version
+```
+/links
+```
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
