@@ -1,8 +1,16 @@
 # URL SHORTENER API
 
-## Endpoint
+## Creating a link [:POST]
 
-Creating a link [:POST] / params => original_url (required), shortened_url (optinal), expires_at (optional/hours as an integer)
+### Params
+
+- original_url (required)
+- shortened_url (optional)
+- expires_at (optional)
+
+original_url = string
+shortened_url = string
+expires_at = integer (hours)
 
 ```
 /links
