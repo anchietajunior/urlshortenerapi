@@ -1,30 +1,27 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :update, :destroy]
 
-  # GET /links
   def index
     @links = Link.all
 
     render json: @links
   end
 
-  # GET /links/1
   def show
     render json: @link
   end
 
-  # POST /links
   def create
-    @link = Link.new(link_params)
+    result = Links::LinkCreatorService.call(User.last, link_params)
 
-    if @link.save
-      render json: @link, status: :created, location: @link
+    if result.success?
+      @link = result.value
+      render json: { shortened_url: @link.shortened_url }, status: :created, location: @link
     else
-      render json: @link.errors, status: :unprocessable_entity
+      render json: { errors: result.error }, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /links/1
   def update
     if @link.update(link_params)
       render json: @link
@@ -33,19 +30,17 @@ class LinksController < ApplicationController
     end
   end
 
-  # DELETE /links/1
   def destroy
     @link.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_link
-      @link = Link.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def link_params
-      params.require(:link).permit(:original_url, :shortened_url, :expires_at, :user_id)
-    end
+  def set_link
+    @link = Link.find(params[:id])
+  end
+
+  def link_params
+    params.permit(:original_url, :shortened_url, :expires_at, :user_id)
+  end
 end

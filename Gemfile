@@ -10,6 +10,7 @@ gem 'devise'
 gem 'jwt'
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
