@@ -4,13 +4,9 @@
 
 ### Params
 
-- original_url (required)
-- shortened_url (optional)
-- expires_at (optional)
-
-original_url = string
-shortened_url = string
-expires_at = integer (hours)
+- original_url (required)  | type: STRING
+- shortened_url (optional) | type: STRING
+- expires_at (optional)    | type: INTEGER
 
 ```
 /links
