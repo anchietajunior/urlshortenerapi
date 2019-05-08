@@ -1,3 +1,4 @@
+require 'pry'
 module Links
   class LinkCreatorService < ApplicationService
     def initialize(user, params)
@@ -19,11 +20,15 @@ module Links
     def create
       loop do
         @link = Link.new link_params
-        break if @link.save
+        break if @link.save!
       end
     end
 
     def shortened_url
+      params[:shortened_url].present? ? params[:shortened_url] : identifier
+    end
+
+    def identifier
       chars = ['0'..'9', 'A'..'Z', 'a'..'z'].map(&:to_a).flatten
       return 6.times.map { chars.sample }.join
     end
