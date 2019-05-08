@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :link do
-    original_url "MyString"
-    shortened_url "MyString"
-    expires_at "2019-05-04 14:22:29"
-    user nil
+    original_url 'https://anchietajunior.com/posts/iniciando-com-neovim'
+    shortened_url 'ujrlkj'
+    expires_at 24.hours.from_now 
+    user
   end
 end
