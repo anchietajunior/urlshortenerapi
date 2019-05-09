@@ -1,6 +1,19 @@
 # URL SHORTENER API
 
-## Creating a link [:POST]
+## POST /login
+
+Authentication
+
+### Params
+
+- email
+- password
+
+## POST /links
+
+Create a shortened link
+
+** This is a authenticated route, send the header Authorization **
 
 ### Params
 
@@ -8,8 +21,5 @@
 - shortened_url (optional) | type: STRING
 - expires_at (optional)    | type: INTEGER
 
-```
-/links
-```
 
 
