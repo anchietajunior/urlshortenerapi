@@ -21,5 +21,11 @@ Create a shortened link
 - shortened_url (optional) | type: STRING
 - expires_at (optional)    | type: INTEGER
 
+## GET /shortened_url
 
+Redirects to the original url
+
+### Params
+
+- shortened_url
 
