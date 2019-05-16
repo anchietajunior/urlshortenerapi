@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: { message: 'User subscribed!' }, status: :ok
+    result = Users::UserCreatorService.call(user_params)
+    p result
+    if result.success?
+      render json: { message: "#{result.value.email} subscribed!" }, status: :ok
     else
-      render json: { message: @user.errors.messages.first }, status: :bad
+      render json: { message: result.error }, status: :bad
     end
   end
 
   private
 
   def user_params
-    params.permit(:email, :password, :password_confirmation)
+    params.permit(:user, :email, :password, :password_confirmation)
   end
 end

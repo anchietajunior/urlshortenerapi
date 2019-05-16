@@ -8,6 +8,7 @@ gem 'puma', '~> 3.11'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'jwt'
+gem 'rack-cors'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'active_model_serializers'
