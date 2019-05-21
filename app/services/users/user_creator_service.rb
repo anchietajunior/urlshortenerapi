@@ -5,8 +5,7 @@ module Users
     end
 
     def call
-      create!
-      Result.new(true, nil, user)
+      Result.new(true, nil, create!)
     rescue StandardError => e
       Result.new(false, e.message, nil)
     end
@@ -16,16 +15,7 @@ module Users
     attr_accessor :params, :user
 
     def create!
-      @user = User.new user_params
-      @user.save!
-    end
-
-    def user_params
-      {}.tap do |hash|
-        hash[:email] = params[:email]
-        hash[:password] = params[:password]
-        hash[:password_confirmation] = params[:password_confirmation]
-      end
+      User.create! params
     end
   end
 end
