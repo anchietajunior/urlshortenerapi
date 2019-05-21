@@ -3,9 +3,9 @@ class UsersController < ApplicationController
     result = Users::UserCreatorService.call(user_params)
     p result
     if result.success?
-      render json: { message: "#{result.value.email} subscribed!" }, status: :ok
+      render json: { message: "#{result.value} subscribed!" }, status: :ok
     else
-      render json: { message: result.error }, status: :bad
+      render json: { error: result.error }, status: :bad
     end
   end
 
